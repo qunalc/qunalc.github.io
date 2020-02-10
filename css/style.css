@@ -785,6 +785,11 @@ a:hover {
   overflow: hidden;
 }
 
+.work-img2 {
+  overflow: hidden;
+  align-content: center;
+}
+
 .work-img img {
   transition: all 1s;
 }
