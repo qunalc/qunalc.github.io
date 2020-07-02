@@ -1,0 +1,173 @@
+#include <Servo.h>
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+const int trigPin = 9;
+const int echoPin = 10;
+
+long duration;
+int distinCM;
+
+Servo radarServo;
+
+void setup() 
+{
+  pinMode(trigPin, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(echoPin, INPUT);
+  Serial.begin(9600);
+  radarServo.attach(11);
+  lcd.begin();
+    lcd.backlight();
+ 
+}
+void loop() 
+{
+  for(int i=0;i<=180;i++)
+  {
+    radarServo.write(i);
+    delay(50);
+    
+    digitalWrite(trigPin, LOW); 
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH); 
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    duration = pulseIn(echoPin, HIGH);
+    distinCM = duration*0.034/2;
+    digitalWrite(4, LOW);   
+
+  if(distinCM > 50)
+  {     digitalWrite(2, LOW);
+  digitalWrite(3, HIGH);
+
+  lcd.clear();
+  lcd.print("Distance= ");
+  lcd.setCursor (12,0); 
+  lcd.print(distinCM);
+  lcd.setCursor (0,1); 
+  lcd.print("Safe !");
+ 
+  delay(50);
+ 
+ 
+   }
+
+    if(distinCM < 50)
+  { 
+    if(distinCM >10)    {
+
+        digitalWrite(4, HIGH);  
+  delay(distinCM*1.2);                     
+  digitalWrite(4, LOW);    
+  delay(distinCM*1.2); 
+    digitalWrite(2, LOW ); 
+    digitalWrite(3, LOW ); 
+   lcd.clear();
+  lcd.print("Distance= ");
+  lcd.setCursor (12,0); 
+  lcd.print(distinCM);
+  lcd.setCursor (0,1); 
+  lcd.print("Alert !!!");
+ 
+  delay(50);
+
+  }}
+  if(distinCM < 10)
+  {    digitalWrite(4, HIGH);   
+    
+    digitalWrite(2, HIGH);
+  digitalWrite(3, LOW);
+lcd.clear();
+  lcd.print("Distance= ");
+  lcd.setCursor (12,0); 
+  lcd.print(distinCM);
+  lcd.setCursor (0,1); 
+  lcd.print("Critical !");
+ 
+  delay(50);
+   }
+  
+ 
+  
+    Serial.print(i);
+    Serial.print("*");
+    Serial.print(distinCM);
+    Serial.print("#");
+  }
+  
+  for(int i=180;i>=0;i--)
+  {
+    radarServo.write(i);
+    delay(50);
+    digitalWrite(trigPin, LOW); 
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH); 
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    duration = pulseIn(echoPin, HIGH);
+    distinCM = duration*0.034/2;
+     digitalWrite(4, LOW);   
+
+  if(distinCM > 50)
+  {     digitalWrite(2, LOW);
+  digitalWrite(3, HIGH);
+
+  lcd.clear();
+   lcd.print("Distance= ");
+  lcd.setCursor (12,0); 
+  lcd.print(distinCM);
+  lcd.setCursor (0,1); 
+  lcd.print("Safe !");
+ 
+  delay(50);
+ 
+ 
+   }
+
+    if(distinCM < 50)
+  { 
+    if(distinCM >10)    {
+
+        digitalWrite(4, HIGH);   
+  delay(distinCM*1.2);                      
+  digitalWrite(4, LOW);   
+  delay(distinCM*1.2); 
+    digitalWrite(2, LOW ); 
+    digitalWrite(3, LOW ); 
+   lcd.clear();
+  lcd.print("Distance= ");
+  lcd.setCursor (12,0); 
+  lcd.print(distinCM);
+  lcd.setCursor (0,1); 
+  lcd.print("Alert !!!");
+ 
+  delay(50);
+
+  }}
+  if(distinCM < 10)
+  {    digitalWrite(4, HIGH);   
+    
+    digitalWrite(2, HIGH);
+  digitalWrite(3, LOW);
+lcd.clear();
+  lcd.print("Distance= ");
+  lcd.setCursor (12,0); 
+  lcd.print(distinCM);
+  lcd.setCursor (0,1); 
+  lcd.print("Critical !");
+ 
+  delay(50);
+   }
+    Serial.print(i);
+    Serial.print("*");
+    Serial.print(distinCM);
+    Serial.print("#");
+  }
+ 
+  
+}
