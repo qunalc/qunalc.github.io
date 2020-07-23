@@ -1,0 +1,62 @@
+#include <ESP8266WiFi.h>
+#include "DHTesp.h"
+DHTesp dht;
+include <ESP8266HTTPClient.h>
+
+WiFiClient client;
+
+String thingSpeakAddress= "http://api.thingspeak.com/update?";
+String writeAPIKey;
+String tsfield1Name;
+String request_string;
+
+HTTPClient http;
+
+void setup()
+{
+   dht.setup(2, DHTesp::DHT11); 
+    WiFi.disconnect();
+   WiFi.begin("Qunxl","Kunal13579");
+  while ((!(WiFi.status() == WL_CONNECTED))){
+    delay(300);
+  }
+
+  Serial.begin(115200);
+}
+
+
+void loop()
+{
+  // Wait a few seconds between measurements.
+  delay(100000);
+
+      float h = dht.getHumidity();
+      float t = dht.getTemperature();
+
+    if (client.connect("api.thingspeak.com",80)) {
+      request_string = thingSpeakAddress;
+      request_string += "key=";
+      request_string += "4WDA67HA08KROE31";
+      request_string += "&";
+      request_string += "field1";
+      request_string += "=";
+      request_string += String(t);
+      request_string += "&";
+      request_string += "field2";
+      request_string += "=";
+      request_string += String(h);
+      http.begin(request_string);
+      http.GET();
+      http.end();
+
+    }
+
+                             Serial.print("Temperature: ");
+                             Serial.print(t);
+                             Serial.print(" degrees Celsius, Humidity: ");
+                             Serial.print(h);
+                             Serial.println("%. Send to Thingspeak.");
+
+    delay(400);
+
+}
