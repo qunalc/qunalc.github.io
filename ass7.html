@@ -146,14 +146,49 @@ The Register will contain three identical sections. In all three sections, Ultra
 			
 			 </div>	<br>
 	
-	  <h2 class="h2" style="color:  #18605f" align="center"><strong>Prototyping & Testing</strong></h2>
-	  <p class="h6">1. For the very first idea, we plan to use an ultrasonic sensor and a servo motor to create a simple device which will automatically dispense sanitizer. We can track exactly how many times we have to open the door, which will ensure the necessary sanitization of the customers entering the store. 
-</p>
-	  <p class="h6">In case if the store does not have an automatic door, an IR sensor can be used to track if someone is entering the store. If the sanitizer is not used just before someone is detected entering the store, a red light or a buzzer will indicate it to the shopkeeper and the customer.</p><br>
+	  <h2 class="h2" style="color:  #18605f" align="center"><strong>Prototyping & Testing</strong></h2><br>
+	  <p class="h6"><strong>1.</strong> For the very first idea, we plan to use an ultrasonic sensor and a servo motor to create a simple device which will automatically dispense sanitizer. We can track exactly how many times we have to open the door, which will ensure the necessary sanitization of the customers entering the store. </p>
+	  <p class="h6">In case if the store does not have an automatic door, an IR sensor can be used to track if someone is entering the store. If the sanitizer is not used just before someone is detected entering the store, a red light or a buzzer will indicate it to the shopkeeper and the customer.</p>
+	  <p class="h6">&nbsp;</p>
+	  <p class="h6"><strong>Feasibility:</strong> The installation of this mechanism is quite simple and could be done very easily </p>
+	  <p class="h6"><strong>Desirability:</strong> The desirability of the solution is high as people forget to sanitize their hands and it would work as a reminder to them to sanitize. Also, it would prevent the requirement of an extra staff member to ensure sanitization which is done at most of the stores. </p>
+	  <p class="h6"><strong>Viability:</strong> The expense of the solution is certainly low as most of the doors at these stores are automatic and it would require very little money to upgrade. </p>
+	  <br>
  
-	<p class="h6">2. The other idea will be implemented using a UV LED and LDR trigger mechanism in all three sections. The circuit will trigger the UV-C lights on after the cash register is closed by waiting for the light-dependent resistor to signify that the register is closed and has been closed for more than several seconds. Then the Nano/555 timer will trigger a MOSFET/optoisolated relay, which then completes the circuit to deliver power to the UV-C LEDs.  
-</p><br>
-	  <p class="h6">3. In this idea, we will install 4 IR sensors in every alley in the shop(2 sensors on each end) and a counter circuit using flip-flops. With the help of the interaction of a person with the IR sensors, it will detect whether the person is going in or out of the alley. If the maximum number in a particular alley is achieved, an alarm or led will indicate the next person to not enter into the alley.</p><br><br>
+	<div class="row">
+			 <div class="col-sm-2"></div>
+        <div class="col-sm-8" align="center">          
+				 <div class="work-img">
+                <img src="img/m21.png" alt="" class="img-fluid">
+					 <p>&nbsp;</p>
+				</div>
+				</div>
+			
+			 </div>
+	<p class="h6"><strong>2.</strong> The other idea will be implemented using a UV LED and LDR trigger mechanism in all three sections. The circuit will trigger the UV-C lights on after the cash register is closed by waiting for the light-dependent resistor to signify that the register is closed and has been closed for more than several seconds. Then the Nano/555 timer will trigger a MOSFET/optoisolated relay, which then completes the circuit to deliver power to the UV-C LEDs. </p>
+	<br>
+	<p class="h6"><strong>Feasibility:</strong> The solution requires re-designing of the entire cash registers and would also involve UV sensors that are required to install properly to ensure maximum sterilization.</p>
+	  <p class="h6"><strong>Desirability:</strong>The solution is desired as the risk of contact is high in cash transfer and if virus is spread can also result in a decrease in manpower which a store would not want to have. </p>
+	  <p class="h6"><strong>Viability:</strong> The expense is not very high as it is not temporary and can be used in the future in case of any other crisis. It also depends on the number of billing counters and cash registers given store has.
+ </p>
+	  <br>
+ 
+	<div class="row">
+			 <div class="col-sm-2"></div>
+        <div class="col-sm-8" align="center">          
+				 <div class="work-img">
+                <img src="img/m22.png" alt="" class="img-fluid">
+					 <p>&nbsp;</p>
+				</div>
+				</div>
+			
+			 </div>
+	<p class="h6"><strong>3.</strong> In this idea, we will install 4 IR sensors in every alley in the shop(2 sensors on each end) and a counter circuit using flip-flops. With the help of the interaction of a person with the IR sensors, it will detect whether the person is going in or out of the alley. If the maximum number in a particular alley is achieved, an alarm or led will indicate the next person to not enter into the alley.</p>
+	<br>
+	<p class="h6"><strong>Feasibility:</strong> For controlling the spread the solution is very desirable. The solution is feasible and does not require much effort. It can be easily done by someone with basic knowledge of these sensors.</p>
+	  <p class="h6"><strong>Desirability:</strong>This solution requires the customers to wait which may result in going to other stores which is not good from the point of the owner.  </p>
+	  <p class="h6"><strong>Viability:</strong>The implementation would be very costly as it would require to use 4 sensors in each alley. The alternative can be to implement this solution only in the alleys that are supposed to be crowded and alleys that are not visited very often can be avoided. </p>
+	  <br><br>
 	
 	 <p class="h6"><strong> This assignment is submitted by Kunal Choudhary 2017CE10117 and Shubham Kumar 2017EE10494.</strong></p><br>
 	
